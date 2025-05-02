@@ -61,13 +61,11 @@ export default function Home() {
     );
   }, []);
 
-  // Fun fact controls
   const toggleFunFact = () => setShowFunFact(s => !s);
   const nextFact = () => setFactIdx(i => (i + 1) % funFacts.length);
 
   const current = events.reduce((prev, ev) => (position >= ev.time ? ev : prev), events[0]);
 
-  // Quiz handlers
   const handleChange = (qId, value) => {
     setAnswers(prev => ({ ...prev, [qId]: value }));
   };
@@ -110,8 +108,8 @@ export default function Home() {
 
       {/* Fun Fact Widget */}
       <section className="funfact-widget">
-        <h1>Welcome to Dinopedia!</h1>
-        <p>Discover the fascinating world of dinosaurs: species, media, and merch await.</p>
+        <h1>Welcome to DinoPedia!</h1>
+        <p>Discover the fascinating world of dinosaurs: species, quiz, museum, and merch await.</p>
         <button className="funfact-toggle" onClick={toggleFunFact}>
           {showFunFact ? 'Hide Fun Fact' : 'Show Fun Fact'}
         </button>
@@ -222,7 +220,7 @@ export default function Home() {
                 ))}
               </div>
             ))}
-            <button type="submit">Submit</button>
+          <button type="submit">Submit</button>
           </form>
         )}
       </section>

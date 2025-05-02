@@ -281,10 +281,9 @@
   text-decoration: underline;
 }
 
-/* ─── Dino Quiz Styles ───────────────────────────────────────────────────── */
 .dino-quiz-section {
   max-width: 90%;
-  margin: 0 auto 4rem;
+  margin: 3rem;
   padding: 2rem;
   background: linear-gradient(135deg, rgba(249,242,223,0.95), rgba(224,247,250,0.95));
   border: 2px solid var(--color-accent);
