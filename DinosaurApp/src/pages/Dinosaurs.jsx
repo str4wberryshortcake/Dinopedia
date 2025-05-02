@@ -171,16 +171,18 @@ const Dinosaurs = () => {
       </div>
 
       {/* New Paleontologists Section */}
-      <h1 className="page-title">Famous Paleontologists</h1>
-      <div className="scientist-list">
-        {SCIENTISTS.map((s, idx) => (
-          <ScientistCard
-            key={idx}
-            scientist={s}
-            expanded={expandedScientist===idx}
-            onClick={() => setExpandedScientist(expandedScientist===idx?null:idx)}
-          />
-        ))}
+      <div className="parallax">
+         <h1 className="page-title">Famous Paleontologists</h1>
+        <div className="scientist-list">
+          {SCIENTISTS.map((s, idx) => (
+            <ScientistCard
+              key={idx}
+              scientist={s}
+              expanded={expandedScientist===idx}
+              onClick={() => setExpandedScientist(expandedScientist===idx?null:idx)}
+            />
+          ))}
+        </div>
       </div>
 
       <h1 className="page-title">Dinosaurs</h1>

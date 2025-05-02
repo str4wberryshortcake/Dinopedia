@@ -122,7 +122,8 @@ export default function Home() {
       </section>
 
       {/* Explore Sections */}
-      <section className="explore-sections">
+      <div className="explore-container">
+      <section className="explore-sections parallax">
         <h2>Explore Our Sections</h2>
         <div className="explore-cards">
           <div className="dino-card">
@@ -147,6 +148,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      </div>
 
       {/* Quiz Section */}
       <section className="dino-quiz-section">

@@ -1,32 +1,113 @@
-import React from 'react';
+// src/Museum.jsx
+import React, { useState } from 'react';
 import 'aframe';
 
 export default function Museum() {
+  // State to hold the user's height input (in inches) and converted meters
+  const [userInches, setUserInches] = useState('');
+  const [cameraHeight, setCameraHeight] = useState(null);
+
+
+  const handleHeightSubmit = (e) => {
+    e.preventDefault();
+    const inches = parseFloat(userInches);
+    if (!isNaN(inches) && inches > 0) {
+      setCameraHeight(inches * 0.0254); 
+    }
+  };
+
   return (
     <div style={{ padding: '20px' }}>
-      <h1 className="page-title">Dinosaur Museum</h1>
-      <div style={{ width: '100%', height: '600px' }}>
-        <a-scene embedded>
-          <a-entity light="type: ambient; intensity: 0.5"></a-entity>
-          <a-entity light="type: directional; intensity: 0.8" position="-1 1 0"></a-entity>
+      <h1 className="page-title">(Very) Mini Dinosaur Museum</h1>
 
-          <a-plane rotation="-90 0 0" width="30" height="30" color="#ddd"></a-plane>
+      {cameraHeight === null ? (
+        <div
+          style={{
+            width: '100%',
+            height: '600px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            background: 'rgba(0,0,0,0.05)'
+          }}
+        >
+          <form onSubmit={handleHeightSubmit} style={{ textAlign: 'center' }}>
+            <label htmlFor="heightInput" style={{ display: 'block', marginBottom: '0.5rem' }}>
+              Enter your height (in inches):
+            </label>
+            <input
+              id="heightInput"
+              type="number"
+              min="24"
+              max="96"
+              step="0.1"
+              value={userInches}
+              onChange={(e) => setUserInches(e.target.value)}
+              style={{
+                padding: '0.5rem',
+                width: '120px',
+                borderRadius: '4px',
+                border: '1px solid #ccc',
+                marginRight: '0.5rem'
+              }}
+              required
+            />
+            <button
+              type="submit"
+              style={{
+                padding: '0.5rem 1rem',
+                border: 'none',
+                borderRadius: '4px',
+                background: '#72cc72',
+                color: '#fff',
+                cursor: 'pointer'
+              }}
+            >
+              Compare!
+            </button>
+          </form>
+        </div>
+      ) : (
+        // Once we have cameraHeight, render the A‑Frame scene
+        <div style={{ width: '100%', height: '600px' }}>
+          <a-scene embedded>
+            <a-sky color="#ceeaed"></a-sky>
+            <a-entity light="type: ambient; intensity: 0.5"></a-entity>
+            <a-entity light="type: directional; intensity: 0.8" position="-1 1 0"></a-entity>
+            <a-plane rotation="-90 0 0" width="100" height="100" color="#72cc72"></a-plane>
 
-          <a-entity camera wasd-controls look-controls position="0 1.6 5"></a-entity>
+            {/* Camera height is set to the user's height in meters */}
+            <a-entity
+              camera
+              wasd-controls
+              look-controls
+              position={`0 ${cameraHeight} 5`}
+            ></a-entity>
 
-          <a-box position="-4 0.75 -3" rotation="0 45 0" depth="1" height="1.5" width="1" color="#D9534F"></a-box>
-          <a-text value="T-Rex" align="center" position="-4 0.1 -3" rotation="-90 0 0" color="#000"></a-text>
+            {/* Dinosaur models at fixed heights */}
+            <a-entity
+              gltf-model="/3dModels/stegosaurus.glb"
+              position="-10 0 8"
+              scale="1 1 1"
+              rotation="0 50 0"
+            ></a-entity>
 
-          <a-sphere position="-1 0.75 -3" radius="0.75" color="#5CB85C"></a-sphere>
-          <a-text value="Stegosaurus" align="center" position="-1 0.1 -3" rotation="-90 0 0" color="#000"></a-text>
+            <a-entity
+              gltf-model="/3dModels/tyrannosaurus.glb"
+              position="-9 2.5 -15"
+              scale="23 23 23"
+              rotation="0 20 0"
+            ></a-entity>
 
-          <a-cylinder position="2 0.75 -3" radius="0.5" height="1.5" color="#5BC0DE"></a-cylinder>
-          <a-text value="Triceratops" align="center" position="2 0.1 -3" rotation="-90 0 0" color="#000"></a-text>
-
-          <a-box position="5 1.25 -3" rotation="0 30 0" depth="0.8" height="2.5" width="0.8" color="#F0AD4E"></a-box>
-          <a-text value="Brachiosaurus" align="center" position="5 0.1 -3" rotation="-90 0 0" color="#000"></a-text>
-        </a-scene>
-      </div>
+            <a-entity
+              gltf-model="/3dModels/branchiosaurus.glb"
+              position="10 0 1"
+              scale="0.7 0.7 0.7"
+              rotation="0 30 0"
+            ></a-entity>
+          </a-scene>
+        </div>
+      )}
     </div>
   );
 }
