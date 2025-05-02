@@ -1,0 +1,139 @@
+
+.evolution-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+  .evolution-card-box {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  .evolution-card {
+    padding: 1rem;
+    width: 250px;
+    background: rgba(249,242,223,0.9);
+    border: 2px solid var(--color-accent);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform var(--transition), box-shadow var(--transition);
+    margin: 0 0.5rem;
+  }
+  .evolution-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+  .arrow { background: var(--color-text); position: relative; }
+  .arrow-right {
+    width: 40px; height: 2px; margin-left: 0.5rem;
+  }
+  .arrow-right::after {
+    content: "";
+    border-left: 7px solid var(--color-text);
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    position: absolute; right: 0; top: -4px;
+  }
+  .arrow-down-center {
+    width: 2px; height: 40px; margin: 1rem auto;
+  }
+  .arrow-down-center::after {
+    content: "";
+    border-top: 7px solid var(--color-text);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    position: absolute; left: -4px; bottom: 0;
+  }
+  
+  /* Page Container */
+  .container {
+    width: 100%;
+    padding: 2rem 1rem;
+    box-sizing: border-box;
+    animation: fadeIn 0.8s ease-out both;
+  }
+  
+  /* Dinosaur Cards Grid */
+  .dino-list {
+    display: grid;
+    grid-template-columns: repeat(2, 45vw);
+    gap: 2vw;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+  
+  /* Landscape Card Layout */
+  .dino-card {
+    display: flex;
+    height: 250px;
+    overflow: hidden;
+    background: rgba(249,242,223,0.9);
+    border: 2px solid var(--color-accent);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform var(--transition), box-shadow var(--transition);
+  }
+  .dino-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+  .dino-card-image {
+    flex: 0 0 40%;
+    height: 100%;
+    overflow: hidden;
+  }
+  .dino-card-image img,
+  .dino-card-image .placeholder {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .dino-card-info {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+  .dino-card-info::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Filters Panel */
+  .filter-container {
+    background: rgba(249,242,223,0.6);
+    backdrop-filter: blur(4px);
+    border: 1px solid var(--color-accent);
+    border-radius: 5px;
+    padding: 1rem 1.5rem;
+    margin: 2rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .filter-left {
+    display: flex; gap: 0.5rem;
+  }
+  .search,
+  .filter-dropdown {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--color-accent);
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  .reset-button {
+    padding: 0.5rem 1.5rem;
+    background: var(--color-text);
+    color: var(--color-bg);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background var(--transition);
+  }
+  .reset-button:hover {
+    background: var(--color-accent);
+  }
+  
+  .page-title {
+    margin-bottom: 1rem;
+  }
+  
