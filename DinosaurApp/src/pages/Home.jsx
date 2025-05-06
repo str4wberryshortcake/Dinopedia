@@ -152,7 +152,7 @@ export default function Home() {
 
       {/* Quiz Section */}
       <section className="dino-quiz-section">
-        <h2>What Kind of Dinosaur Are You?</h2>
+        <h2>What Kind of Dinosaur Are You? Quiz</h2>
 
         {result ? (
 

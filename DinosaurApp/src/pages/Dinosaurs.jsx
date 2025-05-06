@@ -143,7 +143,7 @@ const Dinosaurs = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container-dino">
       <h1 className="page-title">Evolutionary History of Dinosaurs</h1>
 
       <div className="evolution-row">

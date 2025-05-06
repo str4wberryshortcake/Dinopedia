@@ -1,4 +1,3 @@
-
 export const dinosaurs = [
     {
       name: "Tyrannosaurus Rex",
@@ -245,7 +244,6 @@ export const dinosaurs = [
     }
   ];
   
-  // Quiz questions & axis mapping
 export const quizQuestions = [
   { 
     id: 1, 

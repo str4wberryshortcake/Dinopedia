@@ -1,9 +1,7 @@
-// src/Museum.jsx
 import React, { useState } from 'react';
 import 'aframe';
 
 export default function Museum() {
-  // State to hold the user's height input (in inches) and converted meters
   const [userInches, setUserInches] = useState('');
   const [cameraHeight, setCameraHeight] = useState(null);
 

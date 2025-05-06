@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import '../App.css'; // or your global CSS
-
+import '../App.css'; 
 const merchItems = [
   { id: 1, name: 'T-Rex T-Shirt', description: 'Comfortable cotton tee with T-Rex print.', price: 19.99 },
   { id: 2, name: 'Stegosaurus Mug', description: 'Ceramic mug with Stegosaurus silhouette.', price: 12.50 },
   { id: 3, name: 'Triceratops Plush', description: 'Soft plush toy in Triceratops shape.', price: 24.00 },
-  // add more items here...
 ];
 
 const Merch = () => {

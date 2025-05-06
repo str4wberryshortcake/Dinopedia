@@ -1,125 +1,87 @@
 import React, { useState } from 'react';
-import '../App.css'; // or wherever your global styles live
+import '../App.css';
+import './Contact.css';
+
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: 'General Inquiry',
-    message: ''
+    name: '', email: '', subject: 'General Inquiry', message: ''
   });
-  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
-  // handle input changes
-  const handleChange = (e) => {
+
+  const handleChange = e => {
     const { name, value } = e.target;
-    setFormData(f => ({ ...f, [name]: value }));
+    setFormData(data => ({ ...data, [name]: value }));
   };
 
-  // handle form submission
-  const handleSubmit = (e) => {
+
+  const handleSubmit = e => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    setFormSubmitted(true);
+    console.log('Form:', formData);
+    setSubmitted(true);
   };
 
-  // reset form
-  const resetForm = () => {
-    setFormSubmitted(false);
-    setFormData({
-      name: '',
-      email: '',
-      subject: 'General Inquiry',
-      message: ''
-    });
-  };
 
   return (
     <div className="container">
       <h1 className="page-title">Contact Us</h1>
 
-      {formSubmitted ? (
-        <div className="contact-form" style={{ textAlign: 'center' }}>
-          <h2>Thank You!</h2>
-          <p>We've received your message and will get back to you soon.</p>
-          <button className="submit-button" onClick={resetForm}>
-            Send Another Message
-          </button>
-        </div>
-      ) : (
-        <div className="contact-form">
-          <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="name">Name:</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-              />
-            </div>
 
-            <div className="form-group">
-              <label htmlFor="email">Email:</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="subject">Subject:</label>
-              <select
-                id="subject"
-                name="subject"
-                value={formData.subject}
-                onChange={handleChange}
-              >
-                <option value="General Inquiry">General Inquiry</option>
-                <option value="Dinosaur Question">Dinosaur Question</option>
-                <option value="Website Feedback">Website Feedback</option>
-                <option value="Merchandise Question">Merchandise Question</option>
-              </select>
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="message">Message:</label>
-              <textarea
-                id="message"
-                name="message"
-                rows={5}
-                value={formData.message}
-                onChange={handleChange}
-                required
-              ></textarea>
-            </div>
-
-            <button type="submit" className="submit-button">
-              Send Message
+      {submitted
+        ? (
+          <div className="contact-form" style={{ textAlign:'center' }}>
+            <h2>Thank You!</h2>
+            <p>We've received your message and will get back to you soon.</p>
+            <button
+              className="submit-button"
+              onClick={() => {
+                setSubmitted(false);
+                setFormData({ name:'', email:'', subject:'General Inquiry', message:'' });
+              }}
+            >
+              Send Another Message
             </button>
-          </form>
-        </div>
-      )}
-
-      <div style={{ marginTop: '30px', textAlign: 'center' }}>
-        <h2>Visit Us</h2>
-        <p>
-          32-24 Corporal Kennedy Street<br />
-          Queens, NY 11361
-        </p>
-        <p>
-          Phone: (555) 123-4567 <br />
-          Email: info@dinoworld.whatever
-        </p>
-      </div>
+          </div>
+        )
+        : (
+          <div className="contact-form">
+            <form onSubmit={handleSubmit}>
+              <div className="form-group">
+                <label htmlFor="name">Name:</label>
+                <input name="name" id="name" required
+                  value={formData.name} onChange={handleChange} />
+              </div>
+              <div className="form-group">
+                <label htmlFor="email">Email:</label>
+                <input name="email" id="email" type="email" required
+                  value={formData.email} onChange={handleChange} />
+              </div>
+              <div className="form-group">
+                <label htmlFor="subject">Subject:</label>
+                <select name="subject" id="subject"
+                  value={formData.subject} onChange={handleChange}>
+                  <option>General Inquiry</option>
+                  <option>Dinosaur Question</option>
+                  <option>Website Feedback</option>
+                  <option>Merchandise Question</option>
+                </select>
+              </div>
+              <div className="form-group">
+                <label htmlFor="message">Message:</label>
+                <textarea name="message" id="message" rows={5} required
+                  value={formData.message} onChange={handleChange} />
+              </div>
+              <button type="submit" className="submit-button">
+                Send Message
+              </button>
+            </form>
+          </div>
+        )}
+    
     </div>
   );
 };
+
 
 export default Contact;
